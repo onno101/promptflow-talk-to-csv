@@ -1,0 +1,65 @@
+id: template_standard_flow
+name: Template Standard Flow
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  question:
+    type: string
+    default: Get me the the product IDs of plastic for eriks
+    is_chat_input: false
+  chat_history:
+    type: list
+    is_chat_input: false
+outputs:
+  response:
+    type: string
+    reference: ${final_response.output}
+nodes:
+- name: set_csv_config
+  type: python
+  source:
+    type: code
+    path: set_csv_config.py
+  inputs: {}
+  use_variants: false
+- name: llm_node_4adr
+  type: llm
+  source:
+    type: code
+    path: get_sql_query.jinja2
+  inputs:
+    deployment_name: gpt-35-turbo
+    temperature: 0.2
+    top_p: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    chat_history: ${inputs.chat_history}
+    question: ${inputs.question}
+    table_info: ${set_sql_config.output}
+  connection: azure_open_ai_onno
+  api: chat
+  use_variants: false
+- name: get_records
+  type: python
+  source:
+    type: code
+    path: get_records.py
+  inputs:
+    query: ${llm_node_4adr.output}
+  use_variants: false
+- name: final_response
+  type: llm
+  source:
+    type: code
+    path: final_response.jinja2
+  inputs:
+    deployment_name: gpt-35-turbo
+    temperature: 0.5
+    top_p: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    finals_response: ${get_records.output}
+    initial_question: ${inputs.question}
+  connection: azure_open_ai_onno
+  api: chat
+  use_variants: false

@@ -1,0 +1,8 @@
+promptflow
+opentelemetry-instrumentation-langchain
+python-dotenv
+pyyaml
+requests
+sqlalchemy
+pandas
+pandasql
