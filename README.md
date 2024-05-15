@@ -6,11 +6,11 @@ This repository contains artifacts for a solution that enables communication wit
 
 The Azure AI Studio prompt flow is a powerful tool that allows you to create RAG flows in a seamless manner. It provides a user-friendly interface for building, validating and deploying RAG workflows. 
 
-This prompt flow is designed to simplify the process of working with CSV files by providing a set of predefined prompts that guide you through the necessary steps. These prompts allow you to ask questions on the data in the CSV - and 
+This prompt flow is designed to simplify the process of working with CSV files by providing a set of predefined prompts that guide you through the necessary steps. These prompts allow you to ask questions on the data in the CSV - and get an answer in natural language.
 
 By leveraging the capabilities of Azure AI Studio, this prompt flow enables you to easily perform tasks such as data extraction and analysis on CSV files. Whether you are a data scientist, analyst, or developer, the Azure AI Studio prompt flow provides a convenient and efficient way to work with CSV data.
 
-## Prompt flow benefits (Copilot generated)
+## Prompt flow benefits
 Azure Machine Learning prompt flow offers several benefits for developing AI applications powered by Large Language Models (LLMs). Here are the key advantages:
 
 1. Prompt Engineering Agility:
